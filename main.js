@@ -19,4 +19,23 @@ function rainbow(){
         logo_word[i].setAttribute("fill",randomColor);
     }
 }
-rainbow();
+
+function filp(){
+    let style_val='transform: scale(1,-1);';
+    let flip_element=document.querySelector("div.html5-video-player");
+
+    flip_element.setAttribute("style",style_val);
+}
+
+chrome.storage.sync.get({
+    rainbow:true,
+    logo_type:"default",
+    filp:false
+}, function(items) {
+    if (items.rainbow){
+        rainbow();
+    }
+    if (items.filp){
+        filp();
+    }
+})

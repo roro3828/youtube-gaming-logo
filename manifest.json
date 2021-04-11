@@ -9,5 +9,7 @@
         "js": [
             "main.js"
         ]
-    }]
+    }],
+    "options_page": "options.html",
+    "permissions": [ "storage" ]
 }
