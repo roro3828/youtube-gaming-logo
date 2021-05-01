@@ -20,22 +20,33 @@ function rainbow(){
     }
 }
 
-function filp(){
-    let style_val='transform: scale(1,-1);';
+function flip(scale){
+    let style_val='transform: scale('+scale[0]+','+scale[1]+');';
     let flip_element=document.querySelector("div.html5-video-player");
 
     flip_element.setAttribute("style",style_val);
 }
 
+function transform_var(horizontal,vertical){
+    let scale=['1','1'];
+    if(horizontal){
+        scale[0]='-1'
+    }
+    if(vertical){
+        scale[1]='-1'
+    }
+    return scale;
+}
+
 chrome.storage.sync.get({
     rainbow:true,
     logo_type:"default",
-    filp:false
+    flip:[false,false]
 }, function(items) {
     if (items.rainbow){
         rainbow();
     }
-    if (items.filp){
-        filp();
+    if (items.flip[0] || items.flip[1]){
+        flip(transform_var(items.flip[0],items.flip[1]));
     }
 })
