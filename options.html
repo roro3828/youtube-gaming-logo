@@ -31,6 +31,7 @@
     </p>
     <p>
         <input type="range" name="speed" min="-180" max="180" value=0  id="rotation">
+        <input id="show_value" type="number" value=0>
     </p>
 
 </p>
@@ -39,5 +40,15 @@
 <button id="save">Save</button>
 
 <script src="options.js"></script>
+<script>
+    var elem = document.getElementById('rotation');
+    var target = document.getElementById('show_value');
+    var rangeValue = function (elem, target) {
+        return function(evt){
+        target.value = elem.value;
+        }
+    }
+    elem.addEventListener('input', rangeValue(elem, target));
+</script>
 </body>
 </html>
